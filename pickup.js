@@ -97,7 +97,7 @@ const entries = [
   ["Опыт работы", "#route", document.querySelector("#route").textContent],
   ["Технические навыки", "#skills", document.querySelector(".spec").textContent],
   ["Образование и награды", "#education", document.querySelector("#education").textContent],
-  ["Контакты", "#contact", "почта email написать связаться apupro5@gmail.com"],
+  ["Контакты", "#contact", "почта email написать связаться apupro5@gmail.com телеграм тг telegram @Peac3maker телефон позвонить +79898326889"],
   ["Резюме и PDF", "#name", "скачать Артем Пустовой профиль Краснодар Android"]
 ];
 search.hidden = false;
