@@ -3,28 +3,53 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#542174">
+<meta name="theme-color" content="#f8f6ee">
 <title>Пункт выдачи резюме · Артем Пустовой</title>
 <meta name="description" content="Артем Пустовой, Senior Android-разработчик. E-commerce в SurfStudio и мобильная платформа в Иннотехе. Резюме для команды Wildberries.">
+<script>
+document.documentElement.classList.add("boot");
+let showGame = !location.hash;
+try { showGame = showGame && sessionStorage.getItem("pickup-seen") !== "1"; } catch {}
+document.documentElement.classList.toggle("first-visit", showGame);
+</script>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="fonts/unbounded-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css">
+<script src="pickup.js" defer></script>
 </head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="#">Пункт выдачи резюме<span>.</span></a><nav aria-label="Разделы"><a href="#route">Опыт</a><a href="#skills">Стек</a><a href="#contact">Контакты</a></nav></div></header>
+<a class="skip" href="#name">Сразу к резюме</a>
+<header><div class="wrap nav"><a class="brand" href="#name"><span class="brand-icon" aria-hidden="true">↗</span><span>Пункт выдачи<br>резюме</span></a>
+<form class="search" id="search" role="search" hidden><label class="sr" for="query">Найти в резюме</label><input id="query" type="search" placeholder="Найти в резюме" maxlength="80" autocomplete="off"><button aria-label="Найти"><span class="search-icon" aria-hidden="true"></span></button><div id="results" hidden aria-label="Результаты поиска"></div></form>
+<nav aria-label="Навигация"><button id="replay" hidden><span aria-hidden="true">▣</span>Посылки</button><button id="favorite" hidden aria-pressed="false"><span aria-hidden="true">♡</span><span id="fav-label">В избранное</span></button><a href="#contact"><span aria-hidden="true">↗</span>Контакты</a></nav></div></header>
 <main class="wrap">
-<div class="crumb">Карьера &nbsp;/&nbsp; Android &nbsp;/&nbsp; Карточка кандидата</div>
-<section class="hero" aria-labelledby="name">
-<figure><img src="portrait.webp" alt="Артем Пустовой" width="720" height="810"><figcaption><span>КАРТОЧКА КАНДИДАТА</span><b>AP / ANDROID</b></figcaption></figure>
-<div class="summary"><p class="availability"><i></i> Готов к собеседованию</p><h1 id="name">Артем<br>Пустовой<span>.</span></h1><h2>Senior Android Developer</h2><p>В SurfStudio делал каталог, избранное и оплату для мебельной сети. Сейчас отвечаю за общие компоненты двух Android-приложений в Иннотехе.</p>
-<dl><div><dt>Опыт</dt><dd>5 лет</dd></div><div><dt>Откуда</dt><dd>Краснодар</dd></div><div><dt>Формат</dt><dd>Удалённо / гибрид</dd></div></dl>
-<a class="cta" download href="Artem-Pustovoy-Senior-Android.pdf">Забрать резюме <span>↓ PDF</span></a><small>Код из СМС не понадобится.</small></div>
+<section id="game" hidden aria-labelledby="game-title">
+<div class="game-copy"><p class="eyebrow"><span class="signal"></span> Пункт выдачи · Android</p><h1 id="game-title" tabindex="-1">Вам шесть<br><em>посылок.</em></h1><p class="lead">В каждой — часть моего опыта. Открывайте коробки в любом порядке и собирайте резюме.</p>
+<div class="progress"><div class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><b id="count">0 / 6</b></div>
+<p class="announce" id="announce" aria-live="polite" aria-atomic="true">Посылки приехали. Можно забирать!</p>
+<a class="cta" id="exit" href="#name">Сразу к резюме <span>→</span></a></div>
+<div class="locker"><div class="locker-head"><span class="locker-name">ПВЗ<span>✳</span></span><span class="locator">ЯЧЕЙКА / A</span></div>
+<div class="shelves"><button class="parcel parcel-1" data-skill="Kotlin" data-fact="Пишу на Kotlin с первого коммерческого проекта." aria-label="A–01 · Открыть посылку 1" aria-pressed="false">
+<span class="slot">A–01</span><span class="crate" aria-hidden="true"><span class="shadow"></span><span class="inside"></span><span class="prize">KT</span><span class="face-front"></span><span class="face-side"></span><span class="flap flap-one"></span><span class="flap flap-two"></span><span class="label"></span></span><span class="item-name" aria-hidden="true">Kotlin</span></button><button class="parcel parcel-2" data-skill="Compose" data-fact="На Compose собирал карту офиса и экран бронирования." aria-label="A–02 · Открыть посылку 2" aria-pressed="false">
+<span class="slot">A–02</span><span class="crate" aria-hidden="true"><span class="shadow"></span><span class="inside"></span><span class="prize">UI</span><span class="face-front"></span><span class="face-side"></span><span class="flap flap-one"></span><span class="flap flap-two"></span><span class="label"></span></span><span class="item-name" aria-hidden="true">Compose</span></button><button class="parcel parcel-3" data-skill="Room" data-fact="Хранил локальные данные приложения в Room и DataStore." aria-label="A–03 · Открыть посылку 3" aria-pressed="false">
+<span class="slot">A–03</span><span class="crate" aria-hidden="true"><span class="shadow"></span><span class="inside"></span><span class="prize">DB</span><span class="face-front"></span><span class="face-side"></span><span class="flap flap-one"></span><span class="flap flap-two"></span><span class="label"></span></span><span class="item-name" aria-hidden="true">Room</span></button><button class="parcel parcel-4" data-skill="E-commerce" data-fact="Делал каталог, избранное и оплату для мебельной сети." aria-label="A–04 · Открыть посылку 4" aria-pressed="false">
+<span class="slot">A–04</span><span class="crate" aria-hidden="true"><span class="shadow"></span><span class="inside"></span><span class="prize">₽</span><span class="face-front"></span><span class="face-side"></span><span class="flap flap-one"></span><span class="flap flap-two"></span><span class="label"></span></span><span class="item-name" aria-hidden="true">E-commerce</span></button><button class="parcel parcel-5" data-skill="Платформа" data-fact="Развиваю общие компоненты двух Android-приложений." aria-label="A–05 · Открыть посылку 5" aria-pressed="false">
+<span class="slot">A–05</span><span class="crate" aria-hidden="true"><span class="shadow"></span><span class="inside"></span><span class="prize">DI</span><span class="face-front"></span><span class="face-side"></span><span class="flap flap-one"></span><span class="flap flap-two"></span><span class="label"></span></span><span class="item-name" aria-hidden="true">Платформа</span></button><button class="parcel parcel-6" data-skill="Тесты" data-fact="Создал библиотеку snapshot-тестов с кодогенерацией KSP." aria-label="A–06 · Открыть посылку 6" aria-pressed="false">
+<span class="slot">A–06</span><span class="crate" aria-hidden="true"><span class="shadow"></span><span class="inside"></span><span class="prize">QA</span><span class="face-front"></span><span class="face-side"></span><span class="flap flap-one"></span><span class="flap flap-two"></span><span class="label"></span></span><span class="item-name" aria-hidden="true">Тесты</span></button></div><div class="locker-foot"><span class="stripe"></span><span>ВЫДАЧА БЕЗ СМС</span></div></div>
 </section>
-<section id="route"><p class="eyebrow">ОПЫТ РАБОТЫ</p><h2>Маршрут кандидата</h2><div class="route">
+<div id="resume">
+<section class="hero" aria-labelledby="name">
+<figure><img loading="lazy" decoding="async" src="portrait.jpg" alt="Артем Пустовой" width="1280" height="853"><figcaption><span>Артем Пустовой</span><b>Android / Краснодар</b></figcaption></figure>
+<div class="summary"><p class="eyebrow"><span class="signal"></span> Карточка кандидата · Арт. AP–01</p><h1 id="name" tabindex="-1">Артем<br><em>Пустовой.</em></h1><h2>Senior Android Developer</h2><p>В SurfStudio делал каталог, избранное и оплату для мебельной сети. Сейчас развиваю общую платформу двух Android-приложений в Иннотехе.</p>
+<div class="tags"><span>5 лет опыта</span><span>Удалённо / гибрид</span></div>
+<a class="cta" download href="Artem-Pustovoy-Senior-Android.pdf">Забрать резюме <span>↓ PDF</span></a></div></section>
+<section id="route"><p class="eyebrow">ОПЫТ РАБОТЫ</p><h2>Где я работал</h2><div class="route">
 <article><time>10.2024 — сейчас</time><h3>Иннотех</h3><b>Ведущий Android-разработчик</b><p>Общая платформа мобильного клиента ВКС и переговорных комнат. Реализовал SSO, гостевой вход и переключение аккаунтов. Создал библиотеку snapshot-тестов и Gradle-плагин для контроля зависимостей.</p></article>
 <article><time>09.2022 — 10.2024</time><h3>SurfStudio</h3><b>Android-разработчик</b><p>В приложении мебельной сети разрабатывал каталог, заказы, оплату, бонусы и избранное. Проектировал функции на MVVM, подключал REST API и писал JUnit-тесты.</p></article>
 <article><time>11.2021 — 08.2022</time><h3>Иностудио</h3><b>Android-разработчик</b><p>Разрабатывал интерактивную карту офиса и бронирование рабочих мест на Jetpack Compose. Связал экраны с сетевым и локальным слоями на Retrofit и Room.</p></article>
 </div></section>
-<section id="skills"><p class="eyebrow">ТЕХНИЧЕСКИЕ НАВЫКИ</p><h2>Что в комплекте</h2><div class="spec"><p><b>Интерфейсы</b>Kotlin, Java, Android SDK, Jetpack Compose, XML, ViewBinding</p><p><b>Архитектура и данные</b>MVVM, Dagger 2, Hilt, Coroutines, Flow, Room, Retrofit</p><p><b>Качество и сборка</b>JUnit, snapshot-тесты, KSP, Gradle, Detekt, GitLab CI/CD</p></div>
-<details><summary>Образование, награды и публикации</summary><p>Южный федеральный университет. Бакалавр программной инженерии (2023), магистр прикладной информатики (2025). Призовые места WorldSkills Russia. </p><p>II место в конкурсе докладов секции «Методы и средства эффективного человеко-машинного взаимодействия» на XI Всероссийской научно-технической конференции в ЮФУ (Таганрог, 2025).</p><p>Английский — курс Skyeng Upper-intermediate, итоговый экзамен 87/100 (2025).</p><a href="https://habr.com/ru/companies/surfstudio/articles/728554/">Моя статья на Habr о нейронных сетях в Android ↗</a></details></section>
-<section class="contact" id="contact"><div><p class="eyebrow">КОНТАКТЫ</p><h2>Примерим задачу?</h2><p>Расскажите, что разрабатывает ваша команда WB.</p></div><a class="cta" href="mailto:apupro5@gmail.com">Написать Артему ↗</a></section>
-</main><footer class="wrap"><span>Личное портфолио для команды Wildberries</span><a href="https://github.com/Pec3maker">GitHub ↗</a></footer>
+<section id="skills"><p class="eyebrow">ТЕХНИЧЕСКИЕ НАВЫКИ</p><h2>Что в стеке</h2><div class="spec"><p><b>Интерфейсы</b>Kotlin, Java, Android SDK, Jetpack Compose, XML, ViewBinding</p><p><b>Архитектура и данные</b>MVVM, Dagger 2, Hilt, Coroutines, Flow, Room, Retrofit</p><p><b>Качество и сборка</b>JUnit, snapshot-тесты, KSP, Gradle, Detekt, GitLab CI/CD</p></div>
+<details id="education"><summary>Образование, награды и публикации</summary><p>Южный федеральный университет. Бакалавр программной инженерии (2023), магистр прикладной информатики (2025). Призовые места WorldSkills Russia. </p><p>II место в конкурсе докладов секции «Методы и средства эффективного человеко-машинного взаимодействия» на XI Всероссийской научно-технической конференции в ЮФУ (Таганрог, 2025).</p><p>Английский — курс Skyeng Upper-intermediate, итоговый экзамен 87/100 (2025).</p><a href="https://habr.com/ru/companies/surfstudio/articles/728554/">Моя статья на Habr о нейронных сетях в Android ↗</a></details></section>
+<section class="contact" id="contact"><div><p class="eyebrow">КОНТАКТЫ</p><h2>Есть задача для Android?</h2><p>Расскажите, что разрабатывает ваша команда WB.</p></div><a class="cta" href="mailto:apupro5@gmail.com">Забрать в команду ↗</a></section>
+</div></main><footer class="wrap"><span>Артем Пустовой · Портфолио для команды Wildberries</span><a href="https://github.com/Pec3maker">GitHub ↗</a></footer>
 </body></html>
